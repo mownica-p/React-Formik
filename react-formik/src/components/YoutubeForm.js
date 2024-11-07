@@ -35,7 +35,8 @@ function YoutubeForm() {
     onSubmit,
     validate,
   });
-  console.log("form errors", formik.errors);
+  // console.log("form errors", formik.errors);
+  console.log("visited fields", formik.touched);
 
   /* step 2: pass onSubmit function to formik
      onSubmit: (values) => {
@@ -59,6 +60,7 @@ function YoutubeForm() {
           id="name"
           name="name"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.name}
         />
         {formik.errors.name ? (
@@ -72,6 +74,7 @@ function YoutubeForm() {
           type="email"
           name="email"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.email}
         />
         {formik.errors.email ? (
@@ -85,6 +88,7 @@ function YoutubeForm() {
           type="text"
           name="channel"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.channel}
         />
         {formik.errors.channel ? (
