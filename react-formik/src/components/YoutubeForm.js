@@ -2,7 +2,14 @@ import React from "react";
 import { useFormik } from "formik";
 
 function YoutubeForm() {
-  const formik = useFormik({});
+  // step 1: pass initial form values through useFormik() hook initialValues property.
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      channel: "",
+    },
+  });
   return (
     <form>
       <label for="name">Name</label>
