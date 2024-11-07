@@ -11,6 +11,7 @@ const onSubmit = (values) => {
   console.log("form values", values);
 };
 
+//validation function
 const validate = (values) => {
   let errors = {};
   if (!values.name) {
@@ -34,6 +35,7 @@ function YoutubeForm() {
     onSubmit,
     validate,
   });
+  console.log("form errors", formik.errors);
 
   /* step 2: pass onSubmit function to formik
      onSubmit: (values) => {
