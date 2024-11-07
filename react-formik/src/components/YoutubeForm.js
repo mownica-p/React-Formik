@@ -17,7 +17,7 @@ function YoutubeForm() {
   // console.log('"form values"', formik.values);
   return (
     <form onSubmit={formik.handleSubmit}>
-      <label for="name">Name</label>
+      <label htmlFor="name">Name</label>
       <input
         type="text"
         id="name"
@@ -26,7 +26,7 @@ function YoutubeForm() {
         value={formik.values.name}
       />
 
-      <label for="email">Email</label>
+      <label htmlFor="email">Email</label>
       <input
         type="email"
         name="email"
@@ -34,7 +34,7 @@ function YoutubeForm() {
         value={formik.values.email}
       />
 
-      <label for="channel">Channel</label>
+      <label htmlFor="channel">Channel</label>
       <input
         type="text"
         name="channel"
