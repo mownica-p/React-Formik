@@ -42,6 +42,8 @@ function YoutubeForm() {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
+      validateOnChange={false}
+      validateOnBlur={false}
     >
       <Form>
         {/* Define form fields */}
@@ -116,10 +118,11 @@ function YoutubeForm() {
           <label htmlFor="phNumbers">List of Phone Numbers</label>
           <FieldArray name="phNumbers">
             {(fieldArrayProps) => {
-              console.log("fieldArrayProps", fieldArrayProps);
+              //console.log("fieldArrayProps", fieldArrayProps);
               const { push, remove, form } = fieldArrayProps;
               const { values } = form;
               const { phNumbers } = values;
+              console.log("form errors", form.errors);
               return (
                 <div>
                   {phNumbers.map((phNumber, index) => (
