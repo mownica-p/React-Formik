@@ -109,7 +109,24 @@ function YoutubeForm() {
           <FieldArray name="phNumbers">
             {(fieldArrayProps) => {
               console.log("fieldArrayProps", fieldArrayProps);
-              return <div>FieldArray</div>;
+              const { push, remove, form } = fieldArrayProps;
+              const { values } = form;
+              const { phNumbers } = values;
+              return (
+                <div>
+                  {phNumbers.map((phNumber, index) => (
+                    <div key={index}>
+                      <Field name={`phNumbers[${index}]`} />
+                      <button type="button" onClick={() => remove(index)}>
+                        -
+                      </button>
+                      <button type="button" onClick={() => push("")}>
+                        +
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              );
             }}
           </FieldArray>
         </div>
