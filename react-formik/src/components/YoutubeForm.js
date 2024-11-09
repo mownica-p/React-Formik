@@ -163,7 +163,15 @@ function YoutubeForm() {
                 }}
               </FieldArray>
             </div>
-
+            <button
+              type="button"
+              onClick={() => formik.validateField("comments")}
+            >
+              validateComments
+            </button>
+            <button type="button" onClick={() => formik.validateForm()}>
+              validate all
+            </button>
             <button type="submit">Submit</button>
           </Form>
         );
