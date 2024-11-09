@@ -141,7 +141,7 @@ function YoutubeForm() {
                   const { push, remove, form } = fieldArrayProps;
                   const { values } = form;
                   const { phNumbers } = values;
-                  console.log("form errors", form.errors);
+                  //console.log("form errors", form.errors);
                   return (
                     <div>
                       {phNumbers.map((phNumber, index) => (
@@ -171,6 +171,26 @@ function YoutubeForm() {
             </button>
             <button type="button" onClick={() => formik.validateForm()}>
               validate all
+            </button>
+
+            <button
+              type="button"
+              onClick={() => formik.setFieldTouched("comments")}
+            >
+              Visit Comments
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                formik.setTouched({
+                  name: true,
+                  email: true,
+                  channel: true,
+                  comments: true,
+                })
+              }
+            >
+              Visit fields
             </button>
             <button type="submit">Submit</button>
           </Form>
