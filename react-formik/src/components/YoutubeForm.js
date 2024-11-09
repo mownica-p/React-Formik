@@ -24,8 +24,10 @@ const initialValues = {
   phNumbers: [""],
 };
 
-const onSubmit = (values) => {
+const onSubmit = (values, onSubmitProps) => {
   console.log("form values", values);
+  console.log("submit props", onSubmitProps);
+  onSubmitProps.setSubmitting(false);
 };
 
 //validation function
@@ -52,7 +54,7 @@ function YoutubeForm() {
       validationSchema={validationSchema}
       // validateOnChange={false}
       // validateOnBlur={false}
-      validateOnMount
+      //validateOnMount
     >
       {(formik) => {
         console.log("formik props", formik);
@@ -195,7 +197,10 @@ function YoutubeForm() {
             >
               Visit fields
             </button>
-            <button type="submit" disabled={!formik.isValid}>
+            <button
+              type="submit"
+              disabled={!formik.isValid || formik.isSubmitting}
+            >
               Submit
             </button>
           </Form>
