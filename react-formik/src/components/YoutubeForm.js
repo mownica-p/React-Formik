@@ -192,7 +192,9 @@ function YoutubeForm() {
             >
               Visit fields
             </button>
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={!formik.isValid}>
+              Submit
+            </button>
           </Form>
         );
       }}
