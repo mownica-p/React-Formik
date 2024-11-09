@@ -25,7 +25,7 @@ const initialValues = {
 };
 
 const onSubmit = (values) => {
-  //console.log("form values", values);
+  console.log("form values", values);
 };
 
 //validation function
@@ -50,6 +50,9 @@ function YoutubeForm() {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
+      // validateOnChange={false}
+      // validateOnBlur={false}
+      //validateOnMount
     >
       {(formik) => {
         console.log("formik props", formik);
@@ -99,9 +102,9 @@ function YoutubeForm() {
               <FastField name="address">
                 {/*destructuring Field props*/}
                 {(props) => {
-                  console.log("Field render");
+                  // console.log("Field render");
                   const { field, form, meta } = props;
-                  console.log("Render props", props);
+                  //console.log("Render props", props);
                   return (
                     <div>
                       <input type="text" id="address" {...field} />
@@ -192,7 +195,7 @@ function YoutubeForm() {
             >
               Visit fields
             </button>
-            <button type="submit" disabled={!formik.isValid}>
+            <button type="submit" disabled={!(formik.dirty && formik.isValid)}>
               Submit
             </button>
           </Form>
