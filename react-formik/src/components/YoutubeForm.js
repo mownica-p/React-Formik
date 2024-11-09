@@ -34,7 +34,20 @@ const validationSchema = Yup.object({
   name: Yup.string().required("Required!"),
   email: Yup.string().email("Invalid email format").required("Required"),
   channel: Yup.string().required("Required"),
+  comments: Yup.string().required("Required!"),
+  address: Yup.string().required("Required!"),
+  social: Yup.object({
+    facebook: Yup.string().url("Invalid facebook url"),
+    twitter: Yup.string().url("Invalid twitter url"),
+  }),
 });
+const validateComments = (value) => {
+  let error;
+  if (!value) {
+    error = "Required!";
+  }
+  return error;
+};
 
 function YoutubeForm() {
   return (
@@ -42,8 +55,6 @@ function YoutubeForm() {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
-      validateOnChange={false}
-      validateOnBlur={false}
     >
       <Form>
         {/* Define form fields */}
@@ -72,11 +83,19 @@ function YoutubeForm() {
           <ErrorMessage name="channel" />
         </div>
 
+        {/* Field component is used to render form comments*/}
         <div className="form-control">
           <label htmlFor="comments">Comments</label>
-          <Field as="textarea" id="comments" name="comments" />
+          <Field
+            as="textarea"
+            id="comments"
+            name="comments"
+            validate={validateComments}
+          />
+          <ErrorMessage name="comments" component={TextError} />
         </div>
 
+        {/* FastField component is used to render form address*/}
         <div className="form-control">
           <label htmlFor="address">Address</label>
           <FastField name="address">
